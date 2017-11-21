@@ -20,16 +20,16 @@ function divide(a,b) {
 
 // equals
 function equals(storedVal, firstVal, operation) {
-    if(operation = "+") {
+    if(operation == "+") {
         return add(storedVal,firstVal)
     }
-    else if(operation = "-") {
+    else if(operation == "-") {
         return subtract(storedVal, firstVal)
     }
-    else if(operation = "*") {
+    else if(operation == "*") {
         return multiply(storedVal,firstVal)
     }
-    else if(operation = "/") {
+    else if(operation == "/") {
         return divide(storedVal,firstVal)
     }
 }
@@ -79,14 +79,17 @@ function calculate(e) {
             //if there is a firstNum
             let sign = e.target.innerHTML;
             operator = sign;
-            display.innerHTML = equals(storedNum, firstNum, operator);
-            
+            equals = equals(storedNum, firstNum, operator);
+            display.innerHTML = equals;
+            //storedNum = equals;
+            //firstNum = "";
         }
     } 
     // equals sign clicked
     else if (e.target.className === 'equals') {
-        equals = equals(storedNum, firstNum, operator);
+        let equals = equals(storedNum, firstNum, operator);
         display.innerHTML = equals;
+        storedNum = equals;
         console.log(storedNum + operator + firstNum );
         console.log(equals);
         //console.log(operator);
@@ -101,5 +104,5 @@ function calculate(e) {
     
 }
 
-document.body.addEventListener("click", calculate)
+window.addEventListener("click", calculate)
 
