@@ -1,18 +1,31 @@
+body {
+    font-family: monospace;
+    color: #fff;
+}
+
 .calculator {
-    height: 200px;
-    width: 200px;
+    height: 300px;
+    width: 235px;
     margin: auto;
-    border: 1px solid black;
+    border: 6px solid #5a5858;
+    border-radius: 5px;
+    background: #808186;
 }
 
 .display {
     height: 35px;
+    font-size: 1.5em;
 }
 
 .calculator td {
-    padding-left: 15px;
+    padding-left: 25px;
     text-align: center;
     border: 0.5px solid black;
+    border-radius: 5px
+}
+
+.calculator td:active {
+    border: 3px solid green;
 }
 /*
 .numbers {
