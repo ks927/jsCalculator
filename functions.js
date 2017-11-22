@@ -1,36 +1,45 @@
+
 // add
-function add(a,b) {
-   return Number(a) + Number(b);
+function add(storedVal,firstVal) {
+   return +storedVal + +firstVal;
 }
 
 // subtract
 function subtract(a,b) {
-    return Number(a) - Number(b);
+    return +a - +b;
 }
 
 // multiply
 function multiply(a,b) {
-    return Number(a) * Number(b);
+    return +a * +b;
 }
 
 // divide
 function divide(a,b) {
-    return Number(a) / Number(b);
+    return +a / +b;
 }
 
 // equals
 function equals(storedVal, firstVal, operation) {
-    if(operation == "+") {
-        return add(storedVal,firstVal)
+    //console.log( storedVal)
+    //console.log( firstVal)
+    console.log( operation)
+    if(operation == '+') {
+        return add(storedVal,firstVal);
+        console.log(firstVal);
     }
-    else if(operation == "-") {
-        return subtract(storedVal, firstVal)
+    else if(operation == '-') {
+        return subtract(storedVal, firstVal);
+        console.log(firstVal);
     }
-    else if(operation == "*") {
+    else if(operation == '*') {
         return multiply(storedVal,firstVal)
     }
-    else if(operation == "/") {
+    else if(operation == '/') {
         return divide(storedVal,firstVal)
+    }
+    else {
+        return "0";
     }
 }
 
@@ -42,64 +51,55 @@ function equals(storedVal, firstVal, operation) {
 
 
 // listeners
-//const key;
 const display = document.querySelector('.display');
 let firstNum = "";
 let storedNum = "";
 let operator = "";
 
+function clearScreen(){
+    display.innerHTML = "";
+    firstNum = "";
+    storedNum = "";
+    operator = "";
+}
+
 function calculate(e) {
     if (e.target.className === 'number') {
-        // if there hasn't been an operator clicked
-        if (operator === "") {
-            let number = e.target.innerHTML;
-            firstNum += number;
-            display.innerHTML = firstNum;
-        // if there is an operator
-        } else {
-            let number = e.target.innerHTML
+        firstNum += e.target.innerText;
+        display.innerHTML = firstNum;
+}
+    // if operator clicked
+    if (e.target.className === 'operator') {
+        // if there is not a stored number
+        if (storedNum === "") {
+            let sign = e.target.innerText;
+            display.innerHTML = sign;
+            operator = sign;
             storedNum = firstNum;
             firstNum = "";
-            firstNum += number 
-            display.innerHTML = firstNum;
-            console.log(storedNum);
-            console.log(firstNum);
-        }
-    }
-    // if operator clicked
-    else if (e.target.className === 'operator') {
-        // if there is already a first number
-        if (storedNum === "") {
-            let sign = e.target.innerHTML;
-            display.innerHTML = sign;
-            // store the first number and clear it
-            operator = sign;
-            console.log(firstNum);
         } else {
-            //if there is a firstNum
-            let sign = e.target.innerHTML;
+            //if there isn't a stored number
+            result = equals(storedNum, firstNum, operator);
+            let sign = e.target.innerText;
             operator = sign;
-            equals = equals(storedNum, firstNum, operator);
-            display.innerHTML = equals;
-            //storedNum = equals;
-            //firstNum = "";
+            firstNum = "";
+            display.innerHTML = result;
+            storedNum = result;
         }
     } 
     // equals sign clicked
     else if (e.target.className === 'equals') {
-        let equals = equals(storedNum, firstNum, operator);
-        display.innerHTML = equals;
-        storedNum = equals;
-        console.log(storedNum + operator + firstNum );
-        console.log(equals);
-        //console.log(operator);
+        if (storedNum == "" || firstNum == "") {
+            console.log(firstNum, storedNum);
+            clearScreen();
+        } else {
+        result = equals(storedNum, firstNum, operator);
+        display.innerHTML = result;
+        storedNum = result;
+        }
         
     } else if (e.target.className === 'clear') {
-        display.innerHTML = "";
-        firstNum = "";
-        storedNum = "";
-        operator = "";
-        console.log(e.target.className);
+        clearScreen();
     }
     
 }

@@ -5,6 +5,10 @@
     border: 1px solid black;
 }
 
+.display {
+    height: 35px;
+}
+
 .calculator td {
     padding-left: 15px;
     text-align: center;
