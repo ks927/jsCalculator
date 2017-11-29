@@ -76,7 +76,7 @@ function calculate(e) {
             storedNum = firstNum;
             firstNum = "";
         } else {
-            //if there isn't a stored number
+            //if there is a stored number
             result = equals(storedNum, firstNum, operator);
             let sign = e.target.innerText;
             operator = sign;
