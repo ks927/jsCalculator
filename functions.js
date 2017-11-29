@@ -21,8 +21,6 @@ function divide(a,b) {
 
 // equals
 function equals(storedVal, firstVal, operation) {
-    //console.log( storedVal)
-    //console.log( firstVal)
     console.log( operation)
     if(operation == '+') {
         return add(storedVal,firstVal);
@@ -43,10 +41,10 @@ function equals(storedVal, firstVal, operation) {
     }
 }
 
-// all numbers clicked BEFORE operation will be a
+// all numbers clicked BEFORE operation will be firstNum
 // operation will be the function passed
 // all numbers clicked AFTER operation 
-// and BEFORE equals will be b
+// and BEFORE equals will be storedNum
 // equals will fire the equals() function 
 
 

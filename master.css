@@ -24,9 +24,24 @@ body {
     border-radius: 5px
 }
 
+.number {
+    background: #fff;
+    color: firebrick
+}
+
+.operator, .equals {
+    background: firebrick;
+    
+}
+
+.clear {
+    background: black;
+}
+/*
 .calculator td:active {
     border: 3px solid green;
 }
+*/
 /*
 .numbers {
     float: left;
